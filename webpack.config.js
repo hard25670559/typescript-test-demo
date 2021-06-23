@@ -1,11 +1,9 @@
 const path = require( 'path' );
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     optimization: {
         minimize: false,
     },
-    
 
     // bundling mode
     mode: 'production',
@@ -22,6 +20,9 @@ module.exports = {
     // file resolutions
     resolve: {
         extensions: [ '.ts', '.js' ],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js'
+        }
     },
 
     // loaders
@@ -35,14 +36,5 @@ module.exports = {
         ]
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            template: 'index.html',
-            chunks: ['index'],
-            minify: {
-                collapseWhitespace: true, 
-                removeComments: true 
-            },
-        }),
     ]
 };
